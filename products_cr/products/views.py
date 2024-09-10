@@ -1,3 +1,5 @@
+from django.shortcuts import render
+
 from rest_framework import generics
 
 from products_cr.products.models import Product
@@ -13,3 +15,14 @@ class ProductAPIList(generics.ListCreateAPIView):
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+
+def index(request):
+    """
+    Handler takes request and display Product instances
+    and a corresponding form.
+
+    The main logic is put on frontend.
+    """
+
+    return render(request, 'products/index.html')
